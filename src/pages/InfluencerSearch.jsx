@@ -49,12 +49,12 @@ const InfluencerSearch = () => {
     };
 
     return (
-        <div className="flex flex-col min-h-screen px-6 py-6 max-w-7xl mx-auto">
+        <div className="flex flex-col min-h-screen px-4 md:px-6 py-4 md:py-6 max-w-7xl mx-auto">
             {/* Header & Controls */}
             <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-[#1d1d1f]">{t('influencer.title')}</h1>
-                    <p className="text-gray-500 mt-1">{t('influencer.subtitle')}</p>
+                    <h1 className="text-2xl md:text-3xl font-bold text-[#1d1d1f]">{t('influencer.title')}</h1>
+                    <p className="text-sm md:text-base text-gray-500 mt-1">{t('influencer.subtitle')}</p>
                 </div>
 
                 <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg self-start md:self-auto">
@@ -80,7 +80,7 @@ const InfluencerSearch = () => {
                     <span className="font-bold text-sm uppercase tracking-wide text-black">Filters</span>
                 </div>
 
-                <div className="flex flex-wrap gap-4 items-center flex-1">
+                <div className="flex flex-wrap gap-3 md:gap-4 items-center flex-1">
                     {/* Content Type Filter */}
                     <div className="flex bg-gray-100 p-1 rounded-lg">
                         {['feed', 'reels', 'story'].map(type => (

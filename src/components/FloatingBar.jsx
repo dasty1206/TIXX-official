@@ -45,25 +45,25 @@ const FloatingBar = () => {
     const label = isInfluencerPage ? "Selected Influencers" : "Selected Venues";
 
     return (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-[90%] max-w-2xl bg-[#1d1d1f] text-white rounded-full px-8 py-4 shadow-2xl flex items-center justify-between z-50 border-2 border-transparent transition-all duration-300 hover:scale-[1.02]">
-            <div className="flex items-center gap-8">
+        <div className="fixed bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] max-w-2xl bg-[#1d1d1f] text-white rounded-full px-5 py-3 md:px-8 md:py-4 shadow-2xl flex items-center justify-between z-50 border-2 border-transparent transition-all duration-300 hover:scale-[1.02]">
+            <div className="flex items-center gap-4 md:gap-8">
                 <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-bold mb-0.5">{label}</span>
+                    <span className="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider font-bold mb-0.5">{label}</span>
                     <div className="flex items-baseline gap-1">
-                        <span className="text-2xl font-bold font-mono text-accent">{count}</span>
-                        <span className="text-sm text-gray-400">items</span>
+                        <span className="text-xl md:text-2xl font-bold font-mono text-accent">{count}</span>
+                        <span className="text-xs md:text-sm text-gray-400">items</span>
                     </div>
                 </div>
 
-                <div className="h-8 w-px bg-gray-700"></div>
+                <div className="h-6 md:h-8 w-px bg-gray-700"></div>
 
                 <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-bold">총 금액 (최저 금액)</span>
-                    <span className="text-xl font-bold font-mono">{formatCurrency(cost)}~</span>
+                    <span className="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider font-bold">Total (Min)</span>
+                    <span className="text-base md:text-xl font-bold font-mono">{formatCurrency(cost)}~</span>
                 </div>
             </div>
 
-            <button className="bg-accent text-black px-6 py-2.5 rounded-full font-bold hover:brightness-110 transition-all shadow-[0_0_15px_rgba(242,247,98,0.3)] active:scale-95">
+            <button className="bg-accent text-black px-4 md:px-6 py-2 md:py-2.5 rounded-full font-bold text-sm md:text-base hover:brightness-110 transition-all shadow-[0_0_15px_rgba(242,247,98,0.3)] active:scale-95 whitespace-nowrap">
                 {t('common.sendRequest')}
             </button>
         </div>

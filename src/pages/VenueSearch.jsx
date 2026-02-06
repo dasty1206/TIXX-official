@@ -50,15 +50,15 @@ const VenueSearch = () => {
     return (
         <div className="flex flex-col h-[calc(100vh-64px)] overflow-hidden">
             {/* Top Filter Bar */}
-            <div className="bg-white px-6 py-4 border-b border-gray-100 flex flex-wrap items-center shadow-sm z-10 sticky top-0 justify-between">
+            <div className="bg-white px-4 md:px-6 py-4 border-b border-gray-100 flex flex-wrap items-center shadow-sm z-10 sticky top-0 justify-between">
 
                 {/* Left: Title & Main Filters */}
-                <div className="flex flex-1 items-center gap-6 overflow-x-auto pb-2 md:pb-0 hide-scrollbar pr-4">
+                <div className="flex flex-1 items-center gap-3 md:gap-6 overflow-x-auto pb-2 md:pb-0 hide-scrollbar pr-4">
                     <h2 className="text-xl font-bold whitespace-nowrap mr-2 text-black">{t('venue.title')}</h2>
                     <div className="h-6 w-px bg-gray-200 hidden md:block flex-shrink-0"></div>
 
                     {/* Location */}
-                    <div className="relative min-w-[160px] max-w-[200px] flex-shrink-0">
+                    <div className="relative min-w-[140px] md:min-w-[160px] max-w-[200px] flex-shrink-0">
                         <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-black" size={16} strokeWidth={2.5} />
                         <input
                             type="text"
@@ -68,7 +68,7 @@ const VenueSearch = () => {
                     </div>
 
                     {/* Date Picker Range (With Portal) */}
-                    <div className="relative min-w-[240px] max-w-[260px] flex-shrink-0">
+                    <div className="relative min-w-[220px] md:min-w-[240px] max-w-[260px] flex-shrink-0">
                         <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-black z-10 pointer-events-none" size={16} strokeWidth={2.5} />
                         <DatePicker
                             selectsRange={true}
@@ -85,26 +85,26 @@ const VenueSearch = () => {
                     </div>
 
                     {/* Price Range */}
-                    <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 min-w-[210px] h-[38px] flex-shrink-0 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 min-w-[200px] md:min-w-[210px] h-[38px] flex-shrink-0 hover:bg-gray-50 transition-colors">
                         <DollarSign className="text-black mr-2 flex-shrink-0" size={16} strokeWidth={2.5} />
-                        <input type="text" placeholder="Min" className="w-16 bg-transparent text-sm py-2 focus:outline-none text-right font-medium" />
+                        <input type="text" placeholder="Min" className="w-14 md:w-16 bg-transparent text-sm py-2 focus:outline-none text-right font-medium" />
                         <span className="mx-2 text-gray-400 text-xs text-nowrap">~</span>
-                        <input type="text" placeholder="Max" className="w-16 bg-transparent text-sm py-2 focus:outline-none text-right font-medium" />
+                        <input type="text" placeholder="Max" className="w-14 md:w-16 bg-transparent text-sm py-2 focus:outline-none text-right font-medium" />
                         <span className="text-xs text-gray-800 ml-1 text-nowrap font-bold">만원</span>
                     </div>
 
                     {/* Size (Pyeong) Range */}
-                    <div className="relative min-w-[170px] flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 h-[38px] flex-shrink-0 hover:bg-gray-50 transition-colors">
+                    <div className="relative min-w-[150px] md:min-w-[170px] flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 h-[38px] flex-shrink-0 hover:bg-gray-50 transition-colors">
                         <Maximize className="text-black mr-2 flex-shrink-0" size={16} strokeWidth={2.5} />
-                        <input type="text" placeholder="Min" className="w-12 bg-transparent text-sm py-2 focus:outline-none text-center font-medium" />
+                        <input type="text" placeholder="Min" className="w-10 md:w-12 bg-transparent text-sm py-2 focus:outline-none text-center font-medium" />
                         <span className="mx-1 text-gray-400 text-xs">~</span>
-                        <input type="text" placeholder="Max" className="w-12 bg-transparent text-sm py-2 focus:outline-none text-center font-medium" />
+                        <input type="text" placeholder="Max" className="w-10 md:w-12 bg-transparent text-sm py-2 focus:outline-none text-center font-medium" />
                         <span className="text-xs text-gray-800 ml-1 text-nowrap font-bold">평</span>
                     </div>
                 </div>
 
                 {/* Right: Action Button */}
-                <button className="ml-4 p-2.5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors flex-shrink-0 shadow-sm active:scale-95 duration-200">
+                <button className="ml-2 md:ml-4 p-2.5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors flex-shrink-0 shadow-sm active:scale-95 duration-200">
                     <Search size={18} strokeWidth={3} />
                 </button>
             </div>
@@ -182,11 +182,11 @@ const VenueSearch = () => {
                                 <div
                                     key={venue.id}
                                     className={`
-                      flex bg-white rounded-xl overflow-hidden transition-all duration-300 relative
+                      flex flex-col md:flex-row bg-white rounded-xl overflow-hidden transition-all duration-300 relative
                       ${isSelected ? 'shadow-[0_0_0_2px_#f2f762] shadow-accent scale-[1.01]' : 'shadow-sm hover:shadow-md border border-transparent'}
                     `}
                                 >
-                                    <div className="w-48 h-40 flex-shrink-0 bg-gray-200 relative">
+                                    <div className="w-full h-48 md:w-48 md:h-40 flex-shrink-0 bg-gray-200 relative">
                                         <img src={venue.image} alt={venue.name} className="w-full h-full object-cover" />
                                         <button
                                             onClick={(e) => { e.stopPropagation(); toggleFavorite('venue', venue.id); }}
@@ -196,7 +196,7 @@ const VenueSearch = () => {
                                         </button>
                                     </div>
 
-                                    <div className="flex-1 p-5 flex flex-col justify-between">
+                                    <div className="flex-1 p-4 md:p-5 flex flex-col justify-between">
                                         <div className="flex justify-between items-start">
                                             <div>
                                                 <h3 className="font-bold text-lg text-black">{venue.name}</h3>
@@ -211,16 +211,16 @@ const VenueSearch = () => {
                                         </div>
 
                                         <div className="flex justify-between items-end mt-4">
-                                            <div className="flex gap-4">
-                                                <span className="text-xs bg-gray-100 px-2.5 py-1 rounded text-gray-700 font-bold">{venue.pyeong}평</span>
-                                                <span className="text-xs bg-gray-100 px-2.5 py-1 rounded text-gray-700 font-bold">{venue.sqm}m²</span>
-                                                <span className="text-xs bg-gray-100 px-2.5 py-1 rounded text-gray-700 font-bold">Capacity 100+</span>
+                                            <div className="flex gap-2 md:gap-4 overflow-x-auto hide-scrollbar pb-1 md:pb-0">
+                                                <span className="text-xs bg-gray-100 px-2 md:px-2.5 py-1 rounded text-gray-700 font-bold whitespace-nowrap">{venue.pyeong}평</span>
+                                                <span className="text-xs bg-gray-100 px-2 md:px-2.5 py-1 rounded text-gray-700 font-bold whitespace-nowrap">{venue.sqm}m²</span>
+                                                <span className="text-xs bg-gray-100 px-2 md:px-2.5 py-1 rounded text-gray-700 font-bold whitespace-nowrap">Capacity 100+</span>
                                             </div>
 
                                             <button
                                                 onClick={() => toggleVenueSelection(venue.id)}
                                                 className={`
-                              px-6 py-2 rounded-lg font-bold text-sm transition-all duration-200 shadow-sm
+                              px-4 md:px-6 py-2 rounded-lg font-bold text-sm transition-all duration-200 shadow-sm flex-shrink-0
                               ${isSelected
                                                         ? 'bg-accent text-black hover:brightness-95'
                                                         : 'bg-black text-white hover:bg-gray-800'}
