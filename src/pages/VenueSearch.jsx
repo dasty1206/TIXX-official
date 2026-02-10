@@ -26,6 +26,8 @@ const VenueSearch = () => {
     console.log("VenueSearch component rendering"); // Debug log
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
+    const [sortOption, setSortOption] = useState('recommended');
+    const [isSortOpen, setIsSortOpen] = useState(false);
 
     // Purpose Filter State
     const [selectedPurposes, setSelectedPurposes] = useState([]);
