@@ -91,7 +91,8 @@ export const venuesData = [
         price: 2500000,
         image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
         coordinates: { top: '30%', left: '40%' },
-        locationKo: '서울 성수동'
+        locationKo: '서울 성수동',
+        types: ['partyRoom', 'popUpStore', 'emptyVenue']
     },
     {
         id: 2,
@@ -102,7 +103,8 @@ export const venuesData = [
         price: 1800000,
         image: 'https://images.unsplash.com/photo-1554907984-15263bfd63bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
         coordinates: { top: '50%', left: '60%' },
-        locationKo: '서울 한남동'
+        locationKo: '서울 한남동',
+        types: ['popUpStore', 'emptyVenue', 'exhibition']
     },
     {
         id: 3,
@@ -113,7 +115,8 @@ export const venuesData = [
         price: 4200000,
         image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
         coordinates: { top: '20%', left: '70%' },
-        locationKo: '서울 강남'
+        locationKo: '서울 강남',
+        types: ['lounge', 'partyRoom', 'pub']
     },
     {
         id: 4,
@@ -124,6 +127,7 @@ export const venuesData = [
         price: 1200000,
         image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
         coordinates: { top: '65%', left: '30%' },
-        locationKo: '서울 홍대'
+        locationKo: '서울 홍대',
+        types: ['partyRoom', 'studio', 'emptyVenue']
     },
 ];

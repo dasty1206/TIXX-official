@@ -49,6 +49,19 @@ const translations = {
                 recommended: '추천순',
                 priceLow: '낮은 가격순',
                 priceHigh: '높은 가격순',
+            },
+            purposes: {
+                club: '클럽',
+                lounge: '라운지',
+                hotel: '호텔',
+                emptyVenue: '빈 베뉴',
+                pub: '펍',
+                cafe: '카페',
+                partyRoom: '파티룸',
+                afterParty: '애프터파티',
+                popUpStore: '팝업스토어',
+                studio: '스튜디오',
+                exhibition: '전시회',
             }
         }
     },
@@ -98,6 +111,19 @@ const translations = {
                 recommended: 'Recommended',
                 priceLow: 'Price: Low to High',
                 priceHigh: 'Price: High to Low',
+            },
+            purposes: {
+                club: 'Club',
+                lounge: 'Lounge',
+                hotel: 'Hotel',
+                emptyVenue: 'Empty Venue',
+                pub: 'Pub',
+                cafe: 'Cafe',
+                partyRoom: 'Party Room',
+                afterParty: 'After Party',
+                popUpStore: 'Pop-up Store',
+                studio: 'Studio',
+                exhibition: 'Exhibition',
             }
         }
     }

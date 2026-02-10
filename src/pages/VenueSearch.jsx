@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Search, MapPin, Calendar, DollarSign, Maximize, ChevronDown, Heart } from 'lucide-react';
+import { Search, MapPin, Calendar, DollarSign, Maximize, ChevronDown, Heart, Check } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSelection } from '../contexts/SelectionContext';
@@ -25,12 +25,30 @@ const VenueSearch = () => {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
 
-    // Sort State
-    const [sortOption, setSortOption] = useState('recommended');
-    const [isSortOpen, setIsSortOpen] = useState(false);
+    // Purpose Filter State
+    const [selectedPurposes, setSelectedPurposes] = useState([]);
+    const venuePurposes = ['club', 'lounge', 'hotel', 'emptyVenue', 'pub', 'cafe', 'partyRoom', 'afterParty', 'popUpStore'];
 
-    // Sorting Logic
-    const sortedVenues = [...venuesData].sort((a, b) => {
+    const togglePurpose = (purpose) => {
+        setSelectedPurposes(prev =>
+            prev.includes(purpose)
+                ? prev.filter(p => p !== purpose)
+                : [...prev, purpose]
+        );
+    };
+
+    // Filter & Sort Logic
+    const filteredVenues = venuesData.filter(venue => {
+        // Purpose Filter
+        if (selectedPurposes.length > 0) {
+            if (!venue.types || !venue.types.some(type => selectedPurposes.includes(type))) {
+                return false;
+            }
+        }
+        return true;
+    });
+
+    const sortedVenues = [...filteredVenues].sort((a, b) => {
         if (sortOption === 'priceLow') return a.price - b.price;
         if (sortOption === 'priceHigh') return b.price - a.price;
         return 0; // recommended
@@ -107,6 +125,26 @@ const VenueSearch = () => {
                 <button className="ml-2 md:ml-4 p-2.5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors flex-shrink-0 shadow-sm active:scale-95 duration-200">
                     <Search size={18} strokeWidth={3} />
                 </button>
+
+                {/* Purpose Filter Row - Full Width */}
+                <div className="w-full flex items-center gap-2 mt-4 overflow-x-auto hide-scrollbar pb-1">
+                    <span className="text-sm font-bold text-gray-900 mr-2 flex-shrink-0">Purpose:</span>
+                    {venuePurposes.map(purpose => (
+                        <button
+                            key={purpose}
+                            onClick={() => togglePurpose(purpose)}
+                            className={`
+                                px-3 py-1.5 rounded-full text-xs font-bold transition-all border flex items-center gap-1.5 whitespace-nowrap
+                                ${selectedPurposes.includes(purpose)
+                                    ? 'bg-black text-white border-black'
+                                    : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'}
+                            `}
+                        >
+                            {selectedPurposes.includes(purpose) && <Check size={12} strokeWidth={3} />}
+                            {t(`venue.purposes.${purpose}`)}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             <div className="flex flex-1 overflow-hidden">
