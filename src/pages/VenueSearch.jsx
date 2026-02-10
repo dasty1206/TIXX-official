@@ -6,6 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useSelection } from '../contexts/SelectionContext';
 import { venuesData } from '../utils/mockData';
 import { formatCurrency } from '../utils/pricing';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 // Custom Input Component
 // eslint-disable-next-line react/display-name
@@ -41,7 +42,8 @@ const VenueSearch = () => {
     const filteredVenues = venuesData.filter(venue => {
         // Purpose Filter
         if (selectedPurposes.length > 0) {
-            if (!venue.types || !venue.types.some(type => selectedPurposes.includes(type))) {
+            // Safety check for types array
+            if (!venue.types || !Array.isArray(venue.types) || !venue.types.some(type => selectedPurposes.includes(type))) {
                 return false;
             }
         }
@@ -278,4 +280,10 @@ const VenueSearch = () => {
     );
 };
 
-export default VenueSearch;
+const VenueSearchWithBoundary = (props) => (
+    <ErrorBoundary>
+        <VenueSearch {...props} />
+    </ErrorBoundary>
+);
+
+export default VenueSearchWithBoundary;
