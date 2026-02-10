@@ -23,6 +23,7 @@ const DateCustomInput = forwardRef(({ value, onClick, placeholder }, ref) => (
 const VenueSearch = () => {
     const { t, language } = useLanguage();
     const { selectedVenues, toggleVenueSelection, favorites, toggleFavorite, isFavorite } = useSelection();
+    console.log("VenueSearch component rendering"); // Debug log
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
 
@@ -42,8 +43,9 @@ const VenueSearch = () => {
     const filteredVenues = venuesData.filter(venue => {
         // Purpose Filter
         if (selectedPurposes.length > 0) {
-            // Safety check for types array
-            if (!venue.types || !Array.isArray(venue.types) || !venue.types.some(type => selectedPurposes.includes(type))) {
+            // Safety check for types array. treat undefined as empty array
+            const venueTypes = Array.isArray(venue.types) ? venue.types : [];
+            if (!venueTypes.some(type => selectedPurposes.includes(type))) {
                 return false;
             }
         }
